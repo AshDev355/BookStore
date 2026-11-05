@@ -1,0 +1,97 @@
+﻿@model BookStore.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Book Store</h1>
+
+<h2>Available Books</h2>
+
+@if (Model.Books.Count == 0)
+{
+    <p>No books available.</p>
+}
+else
+{
+    <div class="d-flex flex-wrap">
+        @foreach (var book in Model.Books)
+        {
+            <div class="book-card">
+                <h3>@book.Title</h3>
+                <p>Author: @book.AuthorName</p>
+                <p>Price: PKR @book.Price</p>
+
+                <form method="post" action="/Home/RemoveBook"
+                      onsubmit="return confirmRemoveBook()">
+                    <input type="hidden" name="id" value="@book.Id" />
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </div>
+        }
+    </div>
+}
+
+<h2>Add a Book</h2>
+
+<form method="post" action="/Home/AddBook">
+    <div class="mb-3">
+        <label>Title</label>
+        <input type="text" name="title" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Price</label>
+        <input type="number" name="price" class="form-control" step="0.01" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Author</label>
+        <select name="authorId" class="form-control" required>
+            @foreach (var author in Model.Authors)
+            {
+                <option value="@author.Id">@author.Name</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Book</button>
+</form>
+
+<hr />
+
+<h2>Add an Author</h2>
+
+<form method="post" action="/Home/AddAuthor">
+    <div class="mb-3">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Country</label>
+        <input type="text" name="country" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Add Author</button>
+</form>
+
+@section Styles {
+    <style>
+        .book-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 15px;
+            width: 300px;
+            border-radius: 8px;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        function confirmRemoveBook() {
+            return confirm("Remove this book?");
+        }
+    </script>
+}

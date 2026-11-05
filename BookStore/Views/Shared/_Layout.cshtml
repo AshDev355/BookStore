@@ -1,0 +1,136 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Book Store</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/BookStore.styles.css" />
+
+    @RenderSection("Styles", required: false)
+
+    <style>
+        body {
+            background-color: #f4f6fb;
+            font-family: Arial, sans-serif;
+            color: #263238;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            padding: 15px 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #243b55;
+        }
+
+        .nav-link {
+            color: #334e68;
+            font-weight: 500;
+            margin-left: 15px;
+        }
+
+            .nav-link:hover {
+                color: #2563eb;
+            }
+
+        main {
+            padding-top: 25px;
+            padding-bottom: 35px;
+        }
+
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #dce3ed;
+            padding: 20px 0;
+            margin-top: 30px;
+            color: #64748b;
+        }
+
+            footer p {
+                margin: 0;
+            }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light">
+            <div class="container">
+
+                <a class="navbar-brand" href="/">
+                    Book Store
+                </a>
+
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarMenu"
+                        aria-controls="navbarMenu"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMenu">
+                    <ul class="navbar-nav ms-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/About">About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Contact">Contact</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>
+                &copy; 2026 Book Store |
+                Created by Ayesha Tariq |
+                Roll No: BSEF24A007
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
